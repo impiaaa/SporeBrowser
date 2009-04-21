@@ -1,0 +1,21 @@
+﻿/* Creation birthdate */
+"Created on %@" = "%@作成";
+
+/* Creation author */
+"Creation by %@" = "%@によって創作";
+
+/* Connection error */
+"Error" = "エラー";
+
+/* Load more in a list */
+"Load 10 more…" = "負荷10もっと…";
+
+/* A button for an error box */
+"Okay" = "オーケー";
+
+/* Creation rating */
+"Rated %@" = "%@定格";
+
+/* Creation tags */
+"Tags: %@" = "タグ： %@";
+

@@ -6,11 +6,10 @@
 //  Copyright 2009 Spencer Alves. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Creation.h"
 
-@interface DetailViewController : UITableViewController {
+@interface DetailViewController : UITableViewController <UIActionSheetDelegate> {
 	Creation *creation;
 	UIImage *ratingImage;
 }
@@ -24,6 +23,5 @@
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath;
-- initWithCreation:(Creation *)cr;
 
 @end

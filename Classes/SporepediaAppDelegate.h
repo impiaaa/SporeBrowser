@@ -6,13 +6,13 @@
 //  Copyright Spencer Alves 2009. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SporepediaTableViewController.h"
 
 @interface SporepediaAppDelegate : NSObject<UIApplicationDelegate> {
     IBOutlet UIWindow *window;
     IBOutlet UITabBarController *tabBarController;
+	IBOutlet UITabBar *tabBar;
     IBOutlet SporepediaTableViewController *ccTable;
     IBOutlet SporepediaTableViewController *featuredTable;
     IBOutlet SporepediaTableViewController *maxisTable;
@@ -29,5 +29,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet UITabBar *tabBar;
 
 @end

@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="313"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -48,40 +49,150 @@
 			<object class="IBUITabBarController" id="1034742383">
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="334657731">
-					<string key="IBUITitle">Featured</string>
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="477102789">
-						<int key="IBUITag">1</int>
-						<int key="IBUISystemItemIdentifier">2</int>
+				<object class="IBUIViewController" key="IBUISelectedViewController" id="543163654">
+					<string key="IBUITitle">About</string>
+					<object class="IBUIView" key="IBUIView" id="71613128">
+						<reference key="NSNextResponder"/>
+						<int key="NSvFlags">274</int>
+						<object class="NSMutableArray" key="NSSubviews">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUILabel" id="699906434">
+								<reference key="NSNextResponder" ref="71613128"/>
+								<int key="NSvFlags">290</int>
+								<string key="NSFrame">{{20, 20}, {280, 43}}</string>
+								<reference key="NSSuperview" ref="71613128"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string type="base64-UTF8" key="IBUIText">U3BvcmVCcm93c2Vy4oCUYW4gYXBwIGJ5IFNwZW5jZXIgQWx2ZXM</string>
+								<object class="NSColor" key="IBUITextColor" id="305762123">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAAA</bytes>
+								</object>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+								<float key="IBUIMinimumFontSize">1.000000e+01</float>
+								<int key="IBUINumberOfLines">2</int>
+								<int key="IBUITextAlignment">1</int>
+							</object>
+							<object class="IBUILabel" id="124790743">
+								<reference key="NSNextResponder" ref="71613128"/>
+								<int key="NSvFlags">290</int>
+								<string key="NSFrame">{{20, 71}, {280, 40}}</string>
+								<reference key="NSSuperview" ref="71613128"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="IBUIText">If you like the program, please consider buying SporeBrowser Plus!</string>
+								<reference key="IBUITextColor" ref="305762123"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+								<float key="IBUIMinimumFontSize">1.000000e+01</float>
+								<int key="IBUINumberOfLines">3</int>
+								<int key="IBUITextAlignment">1</int>
+								<int key="IBUILineBreakMode">0</int>
+							</object>
+							<object class="IBUIButton" id="934426465">
+								<reference key="NSNextResponder" ref="71613128"/>
+								<int key="NSvFlags">290</int>
+								<string key="NSFrame">{{20, 119}, {280, 37}}</string>
+								<reference key="NSSuperview" ref="71613128"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">1.500000e+01</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<int key="IBUIButtonType">1</int>
+								<string key="IBUIHighlightedTitle">Download now!</string>
+								<string key="IBUIDisabledTitle">Download now!</string>
+								<string key="IBUISelectedTitle">Download now!</string>
+								<string key="IBUINormalTitle">Download now!</string>
+								<reference key="IBUIHighlightedTitleColor" ref="104379795"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+								</object>
+							</object>
+							<object class="IBUILabel" id="253093325">
+								<reference key="NSNextResponder" ref="71613128"/>
+								<int key="NSvFlags">266</int>
+								<string key="NSFrame">{{20, 285}, {280, 106}}</string>
+								<reference key="NSSuperview" ref="71613128"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="IBUIText">The author of this software (Spencer Alves) is not affiliated with and does not endorse Maxis or Electronic Arts. Any trademarks or copyrights are properties of their respective owners.</string>
+								<reference key="IBUITextColor" ref="305762123"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">1.000000e+01</float>
+								<int key="IBUINumberOfLines">5</int>
+								<int key="IBUILineBreakMode">0</int>
+							</object>
+						</object>
+						<string key="NSFrameSize">{320, 411}</string>
+						<reference key="NSSuperview"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace">
+								<int key="NSID">2</int>
+							</object>
+						</object>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+					</object>
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="506446542">
+						<int key="IBUITag">8</int>
+						<string key="IBUITitle">About</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">info.png</string>
+						</object>
+						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="153000069">
-						<nil key="NSNextResponder"/>
-						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{320, 44}</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-					</object>
-					<object class="NSMutableArray" key="IBUIViewControllers">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUIViewController" id="454268033">
-							<string key="IBUITitle">Featured</string>
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="323181224">
-								<string key="IBUITitle"/>
-							</object>
-							<reference key="IBUIParentViewController" ref="334657731"/>
-						</object>
-					</object>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<reference ref="334657731"/>
+					<object class="IBUINavigationController" id="334657731">
+						<string key="IBUITitle">Featured</string>
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="477102789">
+							<int key="IBUITag">1</int>
+							<int key="IBUISystemItemIdentifier">2</int>
+							<reference key="IBUITabBar"/>
+						</object>
+						<reference key="IBUIParentViewController" ref="1034742383"/>
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="153000069">
+							<nil key="NSNextResponder"/>
+							<int key="NSvFlags">256</int>
+							<string key="NSFrameSize">{320, 44}</string>
+							<bool key="IBUIOpaque">NO</bool>
+							<bool key="IBUIClipsSubviews">YES</bool>
+							<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						</object>
+						<object class="NSMutableArray" key="IBUIViewControllers">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIViewController" id="454268033">
+								<string key="IBUITitle">Featured</string>
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="323181224">
+									<string key="IBUITitle"/>
+								</object>
+								<reference key="IBUIParentViewController" ref="334657731"/>
+							</object>
+						</object>
+					</object>
 					<object class="IBUINavigationController" id="360028900">
 						<string key="IBUITitle">Most Recent</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="129681214">
 							<int key="IBUITag">2</int>
 							<int key="IBUISystemItemIdentifier">10</int>
+							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUINavigationBar" key="IBUINavigationBar" id="696442448">
@@ -108,6 +219,7 @@
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="726389990">
 							<int key="IBUITag">3</int>
 							<int key="IBUISystemItemIdentifier">3</int>
+							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUINavigationBar" key="IBUINavigationBar" id="104100863">
@@ -138,6 +250,7 @@
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">popnew.png</string>
 							</object>
+							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUINavigationBar" key="IBUINavigationBar" id="567407125">
@@ -168,6 +281,7 @@
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">cc.png</string>
 							</object>
+							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUINavigationBar" key="IBUINavigationBar" id="693603857">
@@ -198,6 +312,7 @@
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">die.png</string>
 							</object>
+							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUINavigationBar" key="IBUINavigationBar" id="921820338">
@@ -228,6 +343,7 @@
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">maxis_logo.png</string>
 							</object>
+							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUINavigationBar" key="IBUINavigationBar" id="452394525">
@@ -249,113 +365,7 @@
 							</object>
 						</object>
 					</object>
-					<object class="IBUIViewController" id="543163654">
-						<string key="IBUITitle">About</string>
-						<object class="IBUIView" key="IBUIView" id="71613128">
-							<nil key="NSNextResponder"/>
-							<int key="NSvFlags">274</int>
-							<object class="NSMutableArray" key="NSSubviews">
-								<bool key="EncodedWithXMLCoder">YES</bool>
-								<object class="IBUILabel" id="699906434">
-									<reference key="NSNextResponder" ref="71613128"/>
-									<int key="NSvFlags">290</int>
-									<string key="NSFrame">{{20, 20}, {280, 43}}</string>
-									<reference key="NSSuperview" ref="71613128"/>
-									<bool key="IBUIOpaque">NO</bool>
-									<bool key="IBUIClipsSubviews">YES</bool>
-									<bool key="IBUIUserInteractionEnabled">NO</bool>
-									<string type="base64-UTF8" key="IBUIText">U3BvcmVCcm93c2Vy4oCUYW4gYXBwIGJ5IFNwZW5jZXIgQWx2ZXM</string>
-									<object class="NSColor" key="IBUITextColor" id="305762123">
-										<int key="NSColorSpace">1</int>
-										<bytes key="NSRGB">MCAwIDAAA</bytes>
-									</object>
-									<nil key="IBUIHighlightedColor"/>
-									<int key="IBUIBaselineAdjustment">1</int>
-									<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-									<float key="IBUIMinimumFontSize">1.000000e+01</float>
-									<int key="IBUINumberOfLines">2</int>
-									<int key="IBUITextAlignment">1</int>
-								</object>
-								<object class="IBUILabel" id="124790743">
-									<reference key="NSNextResponder" ref="71613128"/>
-									<int key="NSvFlags">290</int>
-									<string key="NSFrame">{{20, 71}, {280, 42}}</string>
-									<reference key="NSSuperview" ref="71613128"/>
-									<bool key="IBUIOpaque">NO</bool>
-									<bool key="IBUIClipsSubviews">YES</bool>
-									<bool key="IBUIUserInteractionEnabled">NO</bool>
-									<string key="IBUIText">Download your own copy of the Spore Creature Creator now!</string>
-									<reference key="IBUITextColor" ref="305762123"/>
-									<nil key="IBUIHighlightedColor"/>
-									<int key="IBUIBaselineAdjustment">1</int>
-									<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-									<float key="IBUIMinimumFontSize">1.000000e+01</float>
-									<int key="IBUINumberOfLines">2</int>
-									<int key="IBUITextAlignment">1</int>
-									<int key="IBUILineBreakMode">0</int>
-								</object>
-								<object class="IBUIButton" id="934426465">
-									<reference key="NSNextResponder" ref="71613128"/>
-									<int key="NSvFlags">290</int>
-									<string key="NSFrame">{{20, 121}, {280, 37}}</string>
-									<reference key="NSSuperview" ref="71613128"/>
-									<bool key="IBUIOpaque">NO</bool>
-									<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-									<int key="IBUIContentHorizontalAlignment">0</int>
-									<int key="IBUIContentVerticalAlignment">0</int>
-									<object class="NSFont" key="IBUIFont">
-										<string key="NSName">Helvetica-Bold</string>
-										<double key="NSSize">1.500000e+01</double>
-										<int key="NSfFlags">16</int>
-									</object>
-									<int key="IBUIButtonType">1</int>
-									<string key="IBUIHighlightedTitle">www.spore.com</string>
-									<string key="IBUIDisabledTitle">www.spore.com</string>
-									<string key="IBUISelectedTitle">www.spore.com</string>
-									<string key="IBUINormalTitle">www.spore.com</string>
-									<reference key="IBUIHighlightedTitleColor" ref="104379795"/>
-									<object class="NSColor" key="IBUINormalTitleColor">
-										<int key="NSColorSpace">1</int>
-										<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
-									</object>
-								</object>
-								<object class="IBUILabel" id="253093325">
-									<reference key="NSNextResponder" ref="71613128"/>
-									<int key="NSvFlags">266</int>
-									<string key="NSFrame">{{20, 291}, {280, 100}}</string>
-									<reference key="NSSuperview" ref="71613128"/>
-									<bool key="IBUIOpaque">NO</bool>
-									<bool key="IBUIClipsSubviews">YES</bool>
-									<bool key="IBUIUserInteractionEnabled">NO</bool>
-									<string key="IBUIText">The author of this software (Spencer Alves) is not affiliated with and does not endorse Maxis or Electronic Arts. Any trademarks or copyrights are properties of their respective owners.</string>
-									<reference key="IBUITextColor" ref="305762123"/>
-									<nil key="IBUIHighlightedColor"/>
-									<int key="IBUIBaselineAdjustment">1</int>
-									<float key="IBUIMinimumFontSize">1.000000e+01</float>
-									<int key="IBUINumberOfLines">5</int>
-									<int key="IBUILineBreakMode">0</int>
-								</object>
-							</object>
-							<string key="NSFrameSize">{320, 411}</string>
-							<object class="NSColor" key="IBUIBackgroundColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MQA</bytes>
-								<object class="NSColorSpace" key="NSCustomColorSpace">
-									<int key="NSID">2</int>
-								</object>
-							</object>
-							<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-						</object>
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="506446542">
-							<int key="IBUITag">8</int>
-							<string key="IBUITitle">About</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">info.png</string>
-							</object>
-						</object>
-						<reference key="IBUIParentViewController" ref="1034742383"/>
-					</object>
+					<reference ref="543163654"/>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="795333663">
 					<nil key="NSNextResponder"/>
@@ -898,9 +908,9 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="253093325"/>
+							<reference ref="699906434"/>
 							<reference ref="124790743"/>
 							<reference ref="934426465"/>
-							<reference ref="699906434"/>
 						</object>
 						<reference key="parent" ref="543163654"/>
 					</object>
@@ -1030,6 +1040,7 @@
 							<string>popularTable</string>
 							<string>randomTable</string>
 							<string>recentTable</string>
+							<string>tabBar</string>
 							<string>tabBarController</string>
 							<string>window</string>
 						</object>
@@ -1042,6 +1053,7 @@
 							<string>SporepediaTableViewController</string>
 							<string>SporepediaTableViewController</string>
 							<string>SporepediaTableViewController</string>
+							<string>UITabBar</string>
 							<string>UITabBarController</string>
 							<string>UIWindow</string>
 						</object>

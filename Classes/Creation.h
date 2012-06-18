@@ -6,9 +6,7 @@
 //  Copyright 2009 Spencer Alves. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "SporepediaTableViewController.h"
 
 @interface Creation : NSObject {
 	NSMutableString *ident;
@@ -18,8 +16,8 @@
 	NSMutableString *author;
 	NSDate *created;
 	double rating;
-	NSMutableString *assetType;
-	unsigned subtype;
+	unsigned long assetType;
+	NSString *localizedAssetType;
 	NSMutableString *parent;
 	NSMutableString *creationDescription;
 	NSMutableString *tags;
@@ -28,8 +26,7 @@
 	NSURLConnection *thumbConnection;
 	NSURLConnection *imageConnection;
 	UITableViewCell *cell;
-	UIImageView *detailImageView;
-	SporepediaTableViewController *table;
+	UITableViewCell *detailCell;
 }
 
 @property (retain) NSMutableString *ident;
@@ -39,14 +36,13 @@
 @property (retain) NSMutableString *author;
 @property (retain) NSDate *created;
 @property double rating;
-@property (retain) NSMutableString *assetType;
-@property unsigned subtype;
+@property unsigned long assetType;
+@property (retain) NSString *localizedAssetType;
 @property (retain) NSMutableString *parent;
 @property (retain) NSMutableString *creationDescription;
 @property (retain) NSMutableString *tags;
 @property (retain) UITableViewCell *cell;
-@property (retain) UIImageView *detailImageView;
-@property (retain) SporepediaTableViewController *table;
+@property (retain) UITableViewCell *detailCell;
 
 - init;
 - (void)setImageFromURLString:(NSString *)urlString isLarge:(BOOL)isLarge;

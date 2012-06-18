@@ -1,0 +1,29 @@
+body {
+	font-family: Helvetica;
+	background-color: white;
+}
+
+.message {
+	color: black;
+	font-size: 14px;
+}
+
+.image {
+    float: left;
+    margin-right: 4px;
+}
+
+.date {
+	color: #AAA;
+	font-style: italic;
+	font-size: 12px;
+	text-align: right;
+    clear: both;
+}
+
+.noevents {
+	color: #AAA;
+	font-weight: bold;
+	font-size: 22px;
+	text-align: center;
+}

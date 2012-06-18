@@ -11,22 +11,29 @@
 @implementation SporepediaAppDelegate
 
 @synthesize window;
-@synthesize tabBarController;
+@synthesize tabBarController, tabBar;
 
 - (IBAction)linkClicked {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.spore.com/"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=317400444&mt=8&ign-mscache=1"]];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     featuredTable.searchTerm = @"FEATURED";    // 1
+	featuredTable.searchType = @"search";
 	recentTable.searchTerm = @"NEWEST";        // 2
+	recentTable.searchType = @"search";
 	popularTable.searchTerm = @"TOP_RATED";    // 3
+	popularTable.searchType = @"search";
     popNewTable.searchTerm = @"TOP_RATED_NEW"; // 4
+	popNewTable.searchType = @"search";
 	ccTable.searchTerm = @"CUTE_AND_CREEPY";   // 5
+	ccTable.searchType = @"search";
 	randomTable.searchTerm = @"RANDOM";        // 6
+	randomTable.searchType = @"search";
     maxisTable.searchTerm = @"MAXIS_MADE";     // 7
+	maxisTable.searchType = @"search";
 	// ...and about/info is 8
-
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *savedOrder = [defaults arrayForKey:@"savedTabOrder"];
 	NSMutableArray *orderedTabs = [NSMutableArray arrayWithCapacity:8];
@@ -43,7 +50,7 @@
 	}
 	int selectedIndex = [defaults integerForKey:@"selectedTabIndex"];
 	tabBarController.selectedIndex = selectedIndex;
-
+	
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 }

@@ -9,24 +9,21 @@
 #import "SporepediaTableViewController.h"
 #import "Creation.h"
 #import "DetailViewController.h"
+#import "SporepediaAppDelegate.h"
 
 @implementation SporepediaTableViewController
 
-@synthesize searchTerm, isUser;
+@synthesize searchTerm, searchType;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	/*if (loadingImage != nil) {
-		[loadingImage release];
-	}*/
+	 [loadingImage release];
+	 }*/
 	if ((!animated) || ([data count] == 0)) {
-		NSURL *url;
-		if (isUser) {
-			url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.spore.com/rest/assets/user/%@/0/10", searchTerm]];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.spore.com/rest/assets/%@/%@/0/10", searchType, searchTerm]];
+		if ([searchType isEqualToString:@"user"])
 			self.title = searchTerm;
-		}
-		else 
-			url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.spore.com/rest/assets/search/%@/0/10", searchTerm]];
 		NSURLRequest *request=[NSURLRequest requestWithURL:url
 											   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
 										   timeoutInterval:30.0];
@@ -101,39 +98,36 @@
 		Creation *asset = [data objectAtIndex:indexPath.row];
 		cell = [tableView dequeueReusableCellWithIdentifier:asset.ident];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:asset.ident] autorelease];
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:asset.ident] autorelease];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			asset.cell = cell;
-			cell.text = asset.creationName;
+			cell.textLabel.text = asset.creationName;
+			UILabel *label = (UILabel *)[[[cell contentView] subviews] objectAtIndex:0];
+			label.numberOfLines = 3;
 		}
-	//	NSLog(@"[loadingImage retainCount] = %i", [loadingImage retainCount]);
-	//	cell.image = loadingImage;
 	}
 	else {
 		cell = [tableView dequeueReusableCellWithIdentifier:@"load more"];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"load more"] autorelease];
-			cell.text = NSLocalizedString(@"Load 10 more…", @"Load more in a list");
-			cell.textColor = [UIColor colorWithRed:0.140625 green:0.4375 blue:0.84375 alpha:1.0];
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"load more"] autorelease];
+			cell.textLabel.text = NSLocalizedString(@"Load 10 more…", @"Load more in a list");
+			cell.textLabel.textColor = [UIColor colorWithRed:0.140625 green:0.4375 blue:0.84375 alpha:1.0];
+			UILabel *label = (UILabel *)[[[cell contentView] subviews] objectAtIndex:0];
+			label.textAlignment = UITextAlignmentCenter;
 		}
-		UILabel *label = (UILabel *)[[[cell contentView] subviews] objectAtIndex:0];
-		label.textAlignment = UITextAlignmentCenter;
 	}
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath {
 	if (newIndexPath.row < [data count]) {
-		DetailViewController *vc = [[DetailViewController alloc] initWithCreation:[data objectAtIndex:newIndexPath.row]];
+		DetailViewController *vc = [[DetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
+		vc.creation = [data objectAtIndex:newIndexPath.row];
 		[self.navigationController pushViewController:vc animated:YES];
 		[vc release];
 	}
 	else {
-		NSURL *url;
-		if (isUser)
-			url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.spore.com/rest/assets/user/%@/%i/10", searchTerm, [data count]]];
-		else
-			url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.spore.com/rest/assets/search/%@/%i/10", searchTerm, [data count]]];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.spore.com/rest/assets/%@/%@/%i/10", searchType, searchTerm, [data count]]];
 		NSURLRequest *request=[NSURLRequest requestWithURL:url
 											   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
 										   timeoutInterval:30.0];
@@ -159,10 +153,9 @@ didStartElement:(NSString *)elementName
    namespaceURI:(NSString *)namespaceURI
   qualifiedName:(NSString *)qualifiedName
 	 attributes:(NSDictionary *)attributeDict {
-
+	
 	if ([elementName caseInsensitiveCompare:@"asset"] == 0) {
 		Creation *c = [[[Creation alloc] init] autorelease];
-		c.table = self;
 		[data addObject:c];
 	}
 	if (currentTag)
@@ -174,16 +167,12 @@ didStartElement:(NSString *)elementName
  didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
-
+	
 	Creation *asset = [data lastObject];
-	if ([elementName isEqualToString:@"thumb"]) {
+	if ([elementName isEqualToString:@"thumb"])
 		[asset setImageFromURLString:tempData isLarge:NO];
-		leftToLoad++;
-	}
-	else if ([elementName isEqualToString:@"image"]) {
+	else if ([elementName isEqualToString:@"image"])
 		[asset setImageFromURLString:tempData isLarge:YES];
-		leftToLoad++;
-	}
 	else if ([elementName isEqualToString:@"created"]) {
 		[tempData appendString:@" GMT"];
 		NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
@@ -193,6 +182,12 @@ didStartElement:(NSString *)elementName
 	}
 	else if ([elementName isEqualToString:@"rating"])
 		asset.rating = [tempData doubleValue];
+	else if ([elementName isEqualToString:@"subtype"]) {
+		unsigned long x;
+		sscanf([tempData UTF8String], "%x", &x);
+		asset.assetType = x;
+		asset.localizedAssetType = NSLocalizedStringFromTable(tempData, @"Types", nil);
+	}
 	if (tempData)
 		[tempData release];
 	tempData = [[NSMutableString alloc] init];
@@ -208,8 +203,6 @@ didStartElement:(NSString *)elementName
 		[asset.creationName appendString:string];
 	else if ([currentTag isEqualToString:@"author"])
 		[asset.author appendString:string];
-	else if ([currentTag isEqualToString:@"type"])
-		[asset.assetType appendString:string];
 	else if ([currentTag isEqualToString:@"description"])
 		[asset.creationDescription appendString:string];
 	else if ([currentTag isEqualToString:@"tags"])
@@ -218,19 +211,26 @@ didStartElement:(NSString *)elementName
 		[tempData appendString:string];
 }
 
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+	NSLog(@"Had parse error: %@", parseError);
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	[xmlData setLength:0];	
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)recievedData {
 	[xmlData appendData:recievedData];	
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	parser = [[NSXMLParser alloc] initWithData:xmlData];
 	[parser setDelegate:self];
+	[parser setShouldResolveExternalEntities:YES];
 	[parser parse];
 	[parser release];
+	parser = nil;
 	if (xmlData) {
 		[xmlData release];
 		xmlData = nil;
@@ -240,6 +240,7 @@ didStartElement:(NSString *)elementName
 	xmlConnection = nil;
 	[[self tableView] reloadData];
 	[data makeObjectsPerformSelector:@selector(refreshCell)];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
@@ -266,16 +267,12 @@ didStartElement:(NSString *)elementName
 	[xmlConnection release];
 	xmlConnection = nil;
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	[[[UIAlertView alloc] initWithTitle:@"Error"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Download error occured")
 								message:[error localizedDescription]
-							   delegate:nil cancelButtonTitle:@"Okay"
-					  otherButtonTitles:nil] show];
-}
-
-- (void)creationDidFinishLoading {
-	leftToLoad--;
-	if (leftToLoad == 0)
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+							   delegate:nil cancelButtonTitle:NSLocalizedString(@"Okay", @"Confirm download error")
+					  otherButtonTitles:nil];
+	[alert show];
+    [alert release];
 }
 
 @end

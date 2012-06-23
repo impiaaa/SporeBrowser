@@ -6,10 +6,9 @@
 //  Copyright 2009 Spencer Alves. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface SporepediaTableViewController : UITableViewController {
+@interface SporepediaTableViewController : UITableViewController<NSXMLParserDelegate> {
 	NSMutableArray *data;
 	UIImage *loadingImage;
 	NSString *searchTerm;
@@ -18,8 +17,7 @@
 	NSMutableData *xmlData;
 	NSURLConnection *xmlConnection;
 	NSXMLParser *parser;
-	BOOL isUser;
-	unsigned leftToLoad;
+	NSString *searchType;
 }
 
 - (void)viewWillAppear:(BOOL)animated;
@@ -47,9 +45,8 @@ didStartElement:(NSString *)elementName
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
-- (void)creationDidFinishLoading;
 
 @property (nonatomic, retain) NSString *searchTerm;
-@property BOOL isUser;
+@property (nonatomic, retain) NSString *searchType;
 
 @end

@@ -11,15 +11,15 @@
 
 @implementation Creation
 
-@synthesize ident, creationName, thumb, image, author, created, rating, assetType, subtype, parent, creationDescription, tags;
-@synthesize cell, detailImageView, table;
+@synthesize ident, creationName, thumb, image, author, created, rating, assetType, localizedAssetType, parent, creationDescription, tags;
+@synthesize cell, detailCell;
 
 - init{
     if ((self = [super init])) {
         ident = [[NSMutableString alloc] init];
 		creationName = [[NSMutableString alloc] init];
 		author = [[NSMutableString alloc] init];
-		assetType = [[NSMutableString alloc] init];
+		localizedAssetType = [[NSMutableString alloc] init];
 		parent = [[NSMutableString alloc] init];
 		creationDescription = [[NSMutableString alloc] init];
 		tags = [[NSMutableString alloc] init];
@@ -42,6 +42,7 @@
 		if (thumbConnection)
 			thumbData=[[NSMutableData data] retain];
 	}
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -60,20 +61,16 @@
 	else if (connection == imageConnection) {
 		[imageData appendData:data];
 	}
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)refreshCell {
 	if ((thumb == nil) || (cell == nil))
 		return;
-	if ((cell.image != thumb) || (cell.image == nil)) {
-		if (cell.image != nil)
-			[cell.image release];
-		cell.image = thumb;
-	}
+	if ((cell.imageView.image != thumb) || (cell.imageView.image == nil))
+		cell.imageView.image = thumb;
 	[cell setNeedsLayout];
 	[cell setNeedsDisplay];
-	//if (isLast)
-	//	[table reloadData];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -92,13 +89,13 @@
 		if (image != nil)
 			[image release];
 		image = [[UIImage imageWithData:imageData] retain];
-		if (detailImageView != nil) {
-			if (detailImageView.image != image)
-				detailImageView.image = image;
-			[detailImageView setNeedsDisplay];
-			[detailImageView setNeedsLayout];
-			[detailImageView.superview setNeedsDisplay];
-			[detailImageView.superview setNeedsLayout];
+		if (detailCell != nil) {
+			UIImageView *v = [[UIImageView alloc] initWithImage:image];
+			v.center = CGPointMake(160, 128);
+			[detailCell.contentView addSubview:v];
+			[v release];
+			[detailCell setNeedsLayout];
+			[detailCell setNeedsDisplay];
 		}
 		[imageData release];
 		imageData = nil;
@@ -106,10 +103,11 @@
 			[imageConnection release];
 		imageConnection = nil;
 	}
-	[table creationDidFinishLoading];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)cancelConnections {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if (thumbConnection)
 		[thumbConnection cancel];
 	if (imageConnection)
@@ -123,7 +121,7 @@
 	[image release];
 	[author release];
 	[created release];
-	[assetType release];
+	[localizedAssetType release];
 	[parent release];
 	[creationDescription release];
 	[tags release];
@@ -136,8 +134,7 @@
 	if (imageData)
 		[imageData release];
 	[cell release];
-	[detailImageView release];
-	[table release];
+	[detailCell release];
 	[super dealloc];
 }
 
@@ -154,12 +151,8 @@
 		[imageConnection release];
 		imageConnection = nil;
 	}
-	[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Connection error")
-								message:[error localizedDescription]
-							   delegate:nil
-					  cancelButtonTitle:NSLocalizedString(@"Okay", @"A button for an error box")
-					  otherButtonTitles:nil] show];
-	[table creationDidFinishLoading];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	NSLog(@"Download error: %@ Connection: %@", error, connection);
 }
 
 @end

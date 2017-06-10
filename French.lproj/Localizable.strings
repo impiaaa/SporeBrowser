@@ -1,0 +1,21 @@
+﻿/* Creation birthdate */
+"Created on %@" = "Créée le %@";
+
+/* Creation author */
+"Creation by %@" = "Création de %@";
+
+/* Connection error */
+"Error" = "Erreur";
+
+/* Load more in a list */
+"Load 10 more…" = "Charge plus de 10…";
+
+/* A button for an error box */
+"Okay" = "Bien";
+
+/* Creation rating */
+"Rated %@" = "Évalué %@";
+
+/* Creation tags */
+"Tags: %@" = "Marque: %@";
+
